@@ -1,3 +1,14 @@
+<!-- app.component.html -->
+
 <main class="container mt-8">
+  <div class="flex justify-center mb-4">
+    <nav class="flex space-x-6">
+      <button (click)="navigateToCustomers()" class="navbar-button">
+        Customer
+      </button>
+      <button (click)="navigateToItems()" class="navbar-button">Item</button>
+      <button (click)="navigateToOrders()" class="navbar-button">Order</button>
+    </nav>
+  </div>
   <router-outlet></router-outlet>
 </main>

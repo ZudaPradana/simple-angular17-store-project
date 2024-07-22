@@ -1,0 +1,76 @@
+<h5 class="mb-5 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+  Order Form
+</h5>
+<form
+  [formGroup]="reportForm"
+  class="w-full"
+  (ngSubmit)="onSubmit()"
+  novalidate
+>
+  <!-- Customer Name Dropdown -->
+  <div class="mb-5">
+    <label
+      for="customerId"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    >
+      Customer Name
+    </label>
+    <select id="customerId" class="form-control" formControlName="customerId">
+      <option value="">Select Customer</option>
+      <option
+        *ngFor="let customer of customers"
+        [value]="customer.customerName"
+      >
+        {{ customer.customerName }}
+      </option>
+    </select>
+    <div
+      *ngIf="
+        reportForm.get('customerId')?.hasError('required') &&
+        reportForm.get('customerId')?.touched
+      "
+      class="form-error"
+    >
+      Customer is required
+    </div>
+  </div>
+
+  <!-- Item Name Input -->
+  <div class="mb-5">
+    <label
+      for="itemId"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    >
+      Item Name
+    </label>
+    <select id="itemId" class="form-control" formControlName="itemId">
+      <option value="">Select Item</option>
+      <option *ngFor="let item of items" [value]="item.itemName">
+        {{ item.itemId }}.{{ item.itemName }} : {{ item.stock }} unit
+      </option>
+    </select>
+    <div
+      *ngIf="
+        reportForm.get('itemId')?.hasError('required') &&
+        reportForm.get('itemId')?.touched
+      "
+      class="form-error"
+    >
+      Item is required
+    </div>
+  </div>
+  <button
+    (click)="onSubmit()"
+    type="button"
+    class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-full px-6 py-3 text-center mb-2"
+  >
+    Download Report
+  </button>
+  <button
+    type="button"
+    (click)="onClose()"
+    class="text-white ms-2 bg-gray-700 hover:bg-gray-800 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center"
+  >
+    Cancel
+  </button>
+</form>

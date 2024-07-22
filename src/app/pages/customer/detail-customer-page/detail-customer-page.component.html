@@ -1,0 +1,33 @@
+<div class="p-6">
+  <h2 class="text-2xl font-bold mb-4">Customer Details</h2>
+  <div class="flex flex-col items-center mb-4">
+    <img
+      [src]="customer?.pic"
+      alt="Customer Photo"
+      class="w-32 h-32 rounded-full mb-2"
+    />
+    <h3 class="text-xl font-semibold">{{ customer?.customerName }}</h3>
+  </div>
+  <div class="mb-4">
+    <strong>Address:</strong>
+    <p>{{ customer?.customerAddress }}</p>
+  </div>
+  <div class="mb-4">
+    <strong>Phone:</strong>
+    <p>{{ customer?.customerPhone }}</p>
+  </div>
+  <div class="mb-4">
+    <strong>Active:</strong>
+    <p>{{ customer?.isActive ? "Yes" : "No" }}</p>
+  </div>
+  <div class="mb-4">
+    <strong>Last Order:</strong>
+    <p>{{ customer?.lastOrderDate }}</p>
+  </div>
+  <button
+    (click)="onClose()"
+    class="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+  >
+    Close
+  </button>
+</div>

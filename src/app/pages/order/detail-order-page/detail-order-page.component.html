@@ -1,0 +1,33 @@
+<div class="p-6">
+  <h2 class="text-2xl font-bold mb-4">Order Details : {{ order?.orderId }}</h2>
+  <div class="mb-4">
+    <strong>Code</strong>
+    <p>{{ order?.orderCode }}</p>
+  </div>
+  <div class="mb-4">
+    <strong>Name</strong>
+    <p>{{ order?.customers?.customerName }}</p>
+  </div>
+  <div class="mb-4">
+    <strong>Item</strong>
+    <p>{{ order?.items?.itemName }}</p>
+  </div>
+  <div class="mb-4">
+    <strong>Quantity</strong>
+    <p>{{ order?.quantity }}</p>
+  </div>
+  <div class="mb-4">
+    <strong>Total Price</strong>
+    <p>{{ order?.totalPrice }}</p>
+  </div>
+  <div class="mb-4">
+    <strong>Order Date</strong>
+    <p>{{ order?.orderDate }}</p>
+  </div>
+  <button
+    (click)="onClose()"
+    class="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+  >
+    Close
+  </button>
+</div>

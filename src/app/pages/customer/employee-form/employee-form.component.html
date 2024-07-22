@@ -1,0 +1,140 @@
+<h5 class="mb-5 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+  Employee Details
+</h5>
+<form
+  [formGroup]="employeeForm"
+  class="w-full"
+  (ngSubmit)="onSubmit()"
+  novalidate
+>
+  <div class="mb-5">
+    <label
+      for="customerName"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Customer Name</label
+    >
+    <input
+      type="text"
+      id="customerName"
+      class="form-control"
+      placeholder="Name"
+      formControlName="customerName"
+    />
+    <div
+      *ngIf="
+        employeeForm.get('customerName')?.hasError('required') &&
+        employeeForm.get('customerName')?.touched
+      "
+      class="form-error"
+    >
+      Name is required
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <label
+      for="customerAddress"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Customer Address</label
+    >
+    <input
+      type="text"
+      id="customerAddress"
+      class="form-control"
+      placeholder="Address"
+      formControlName="customerAddress"
+    />
+    <div
+      *ngIf="
+        employeeForm.get('customerAddress')?.hasError('required') &&
+        employeeForm.get('customerAddress')?.touched
+      "
+      class="form-error"
+    >
+      Address is required
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <label
+      for="customerPhone"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Customer Phone</label
+    >
+    <input
+      type="text"
+      id="customerPhone"
+      class="form-control"
+      placeholder="Mobile"
+      formControlName="customerPhone"
+    />
+    <div
+      *ngIf="
+        employeeForm.get('customerPhone')?.hasError('required') &&
+        employeeForm.get('customerPhone')?.touched
+      "
+      class="form-error"
+    >
+      Mobile is required
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <label
+      for="pic"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Upload Pic</label
+    >
+    <input
+      type="file"
+      id="pic"
+      class="form-control"
+      (change)="onFileChange($event)"
+      accept="image/*"
+    />
+    <div
+      *ngIf="
+        employeeForm.get('pic')?.hasError('required') &&
+        employeeForm.get('pic')?.touched
+      "
+      class="form-error"
+    >
+      Pic is required
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <label
+      for="isActive"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Is Active</label
+    >
+    <select id="isActive" class="form-control" formControlName="isActive">
+      <option [value]="true">Yes</option>
+      <option [value]="false">No</option>
+    </select>
+    <div
+      *ngIf="
+        employeeForm.get('isActive')?.hasError('required') &&
+        employeeForm.get('isActive')?.touched
+      "
+      class="form-error"
+    >
+      Is Active is required
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center"
+  >
+    Submit
+  </button>
+  <button
+    type="button"
+    (click)="onClose()"
+    class="text-white ms-2 bg-gray-700 hover:bg-gray-800 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center"
+  >
+    Cancel
+  </button>
+</form>

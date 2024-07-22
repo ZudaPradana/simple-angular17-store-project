@@ -1,0 +1,95 @@
+<h5 class="mb-5 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+  Order Form
+</h5>
+<form [formGroup]="orderForm" class="w-full" (ngSubmit)="onSubmit()" novalidate>
+  <!-- Customer Name Dropdown -->
+  <div class="mb-5" *ngIf="!data || !data.orderId">
+    <label
+      for="customerId"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    >
+      Customer Name
+    </label>
+    <select id="customerId" class="form-control" formControlName="customerId">
+      <option value="">Select Customer</option>
+      <option *ngFor="let customer of customers" [value]="customer.customerId">
+        {{ customer.customerName }}
+      </option>
+    </select>
+    <div
+      *ngIf="
+        orderForm.get('customerId')?.hasError('required') &&
+        orderForm.get('customerId')?.touched
+      "
+      class="form-error"
+    >
+      Customer is required
+    </div>
+  </div>
+
+  <!-- Item Name Input -->
+  <div class="mb-5">
+    <label
+      for="itemId"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    >
+      Item Name
+    </label>
+    <select id="itemId" class="form-control" formControlName="itemId">
+      <option value="">Select Item</option>
+      <option *ngFor="let item of items" [value]="item.itemId">
+        {{ item.itemId }}.{{ item.itemName }} : {{ item.stock }} unit
+      </option>
+    </select>
+    <div
+      *ngIf="
+        orderForm.get('itemId')?.hasError('required') &&
+        orderForm.get('itemId')?.touched
+      "
+      class="form-error"
+    >
+      Item is required
+    </div>
+  </div>
+
+  <!-- Quantity Input -->
+  <div class="mb-5">
+    <label
+      for="quantity"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    >
+      Quantity
+    </label>
+    <input
+      type="number"
+      id="quantity"
+      class="form-control"
+      placeholder="Quantity"
+      formControlName="quantity"
+    />
+    <div
+      *ngIf="
+        orderForm.get('quantity')?.hasError('required') &&
+        orderForm.get('quantity')?.touched
+      "
+      class="form-error"
+    >
+      Quantity is required
+    </div>
+  </div>
+
+  <!-- Submit and Cancel Buttons -->
+  <button
+    type="submit"
+    class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center"
+  >
+    Submit
+  </button>
+  <button
+    type="button"
+    (click)="onClose()"
+    class="text-white ms-2 bg-gray-700 hover:bg-gray-800 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center"
+  >
+    Cancel
+  </button>
+</form>
